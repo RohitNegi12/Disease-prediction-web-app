@@ -20,11 +20,11 @@ st.set_page_config(
 )
 # loading the saved models
 
-diabetes_model = pickle.load(open('C:/Users/rnegi/Desktop/ML complete/MLApp/savedmodels/diabetes_model.sav', 'rb'))
+diabetes_model = pickle.load(open('models/diabetes_model.sav', 'rb'))
 
-heart_disease_model = pickle.load(open('C:/Users/rnegi/Desktop/ML complete/MLApp/savedmodels/heart_disease_model.sav', 'rb'))
+heart_disease_model = pickle.load(open('models/heart_disease_model.sav', 'rb'))
 
-parkinsons_model = pickle.load(open('C:/Users/rnegi/Desktop/ML complete/MLApp/savedmodels/parkinsons_model.sav', 'rb'))
+# parkinsons_model = pickle.load(open('C:/Users/rnegi/Desktop/ML complete/MLApp/savedmodels/parkinsons_model.sav', 'rb'))
 
 # keras_model=load_model('C:/Users/rnegi/Desktop/ML complete/MLApp/nnmodels/tumour.h5')
 # 2. horizontal menu
@@ -50,11 +50,11 @@ if selected2=="Home":
             st.subheader("Brain Tumor Prediction")
             image_file = st.file_uploader("Upload Image", type=['png', 'jpeg', 'jpg'])
             def predict(img):
-                    model = load_model(r'C:/Users/rnegi/Desktop/ML complete/MLApp/nnmodels/tumour.h5',compile=False)
-                    shape = ((200, 200, 3))
+                    model = load_model(r'models/brain_tumour.h5',compile=False)
+                    shape = ((224, 224, 3))
                     # model=tf.keras.Sequential([hub.kerasLayer(model, input_shape=shape)])
-                    test_image = img.resize((200, 200))
-                    image = np.reshape(test_image,[1,200,200,3])
+                    test_image = img.resize((224, 224))
+                    image = np.reshape(test_image,[1,224,224,3])
 
                     tumour_prediction = model.predict(image)
                     return tumour_prediction
